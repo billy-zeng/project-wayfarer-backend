@@ -4,7 +4,7 @@ const db = require('../models');
 // POST Registration - Creating New User
 
 const signup = (req, res) => {
-  if (!req.body.firstName || !req.body.lastName || !req.body.username || !req.body.email || !req.body.password || !req.body.city) {
+  if (!req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({
       status: 400,
       message: 'Please enter your fitst name, last name, username, city, email and password'
@@ -44,11 +44,9 @@ const signup = (req, res) => {
           });
 
         const newUser = {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
+          username: req.body.username,
           email: req.body.email,
           password: hash,
-          city: req.body.city
         };
 
         db.User.create(newUser, (err, savedUser) => {
