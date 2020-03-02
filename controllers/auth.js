@@ -3,7 +3,7 @@ const db = require('../models');
 
 // POST Registration - Creating New User
 
-const register = (req, res) => {
+const signup = (req, res) => {
   if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
     return res.status(400).json({
       status: 400,
@@ -130,7 +130,7 @@ const verify = (req, res) => {
 };
 
 module.exports = {
-  register,
+  signup,
   login,
   verify,
   logout
