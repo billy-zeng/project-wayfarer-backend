@@ -2,18 +2,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-
-const routes = require('./routes');
-
 const cors = require('cors');
 const app = express();
 
 require('dotenv').config();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT
 
-const DB_URI = process.env.MONGODB_URI;
+const routes = require('./routes');
 ​
-
 // --------------------------------- Middleware --------------------------------- //
 const corsOptions = {
     origin: ['http://localhost:3000'],
@@ -37,7 +33,8 @@ app.get('/', (req, res)=>{
     res.send('<h1>Homepage</h1>');
 });
 
-
+app.use('/api/v1/auth', routes.auth);
+app.use('/api/v1/users', routes.users);
 
 app.listen(PORT, () =>
     console.log(`Server connected at http://localhost:${PORT}`)
