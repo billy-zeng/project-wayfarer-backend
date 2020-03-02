@@ -4,10 +4,10 @@ const db = require('../models');
 // POST Registration - Creating New User
 
 const signup = (req, res) => {
-  if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password) {
+  if (!req.body.firstName || !req.body.lastName || !req.body.username || !req.body.email || !req.body.password || !req.body.city) {
     return res.status(400).json({
       status: 400,
-      message: 'Please enter your fitst name, last name, email and password'
+      message: 'Please enter your fitst name, last name, username, city, email and password'
     });
   }
   // Verified Account Does Not Exist
@@ -47,7 +47,8 @@ const signup = (req, res) => {
           firstName: req.body.firstName,
           lastName: req.body.lastName,
           email: req.body.email,
-          password: hash
+          password: hash,
+          city: req.body.city
         };
 
         db.User.create(newUser, (err, savedUser) => {
