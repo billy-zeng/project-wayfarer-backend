@@ -9,7 +9,7 @@ require('dotenv').config();
 const PORT = process.env.PORT
 
 const routes = require('./routes');
-​
+
 // --------------------------------- Middleware --------------------------------- //
 const corsOptions = {
     origin: ['http://localhost:3000'],
