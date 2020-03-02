@@ -35,6 +35,7 @@ app.get('/', (req, res)=>{
 
 app.use('/api/v1/auth', routes.auth);
 app.use('/api/v1/users', routes.users);
+app.use('/api/v1/post', routes.post);
 
 app.listen(PORT, () =>
     console.log(`Server connected at http://localhost:${PORT}`)
