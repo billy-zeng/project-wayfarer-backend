@@ -8,12 +8,25 @@ const PostSchema = mongoose.Schema({
         type: String,
     },
     authorId: {
+<<<<<<< HEAD
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+=======
+        type: Schema.Type.ObjectId,
+        ref: 'User'
+    },
+    city: {
+        type: String
+    },
+>>>>>>> submaster
     content: {
         type: String,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 const Post = mongoose.model('Post', PostSchema);
