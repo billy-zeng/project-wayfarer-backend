@@ -7,7 +7,7 @@ const signup = (req, res) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({
       status: 400,
-      message: 'Please enter your fitst name, last name, username, city, email and password'
+      message: 'Please enter your username, email and password'
     });
   }
   // Verified Account Does Not Exist
@@ -44,9 +44,15 @@ const signup = (req, res) => {
           });
 
         const newUser = {
+<<<<<<< HEAD
+                username: req.body.username,
+                email: req.body.email,
+                password: hash,
+=======
           username: req.body.username,
           email: req.body.email,
           password: hash,
+>>>>>>> submaster
         };
 
         db.User.create(newUser, (err, savedUser) => {
