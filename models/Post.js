@@ -8,7 +8,7 @@ const PostSchema = mongoose.Schema({
         type: String,
     },
     authorId: {
-        type: Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     city: {
