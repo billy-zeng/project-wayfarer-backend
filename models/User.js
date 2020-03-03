@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const UserSchema = mongoose.Schema({
     firstName: {
         type: String,
+        default: ''
     },
     lastName: {
         type: String,
+        default: ''
     },
     username: {
         type: String,
@@ -21,6 +23,11 @@ const UserSchema = mongoose.Schema({
     },
     city: {
         type: String,
+        default: ''
+    },
+    state: {
+        type: String,
+        default: ''
     },
     createdAt: {
         type: Date,
