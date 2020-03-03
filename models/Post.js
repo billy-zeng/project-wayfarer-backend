@@ -7,9 +7,7 @@ const PostSchema = mongoose.Schema({
     author: {
         type: String,
     },
-    content: {
-        type: String,
-    },
+    // content: [{type: Schema.Type.ObjectId, ref: 'post'}],
 });
 
 const Post = mongoose.model('Post', PostSchema);
