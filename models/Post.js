@@ -8,18 +8,12 @@ const PostSchema = mongoose.Schema({
         type: String,
     },
     authorId: {
-<<<<<<< HEAD
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-=======
         type: Schema.Type.ObjectId,
         ref: 'User'
     },
     city: {
         type: String
     },
->>>>>>> submaster
     content: {
         type: String,
     },
