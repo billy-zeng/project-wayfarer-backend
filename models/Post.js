@@ -7,7 +7,24 @@ const PostSchema = mongoose.Schema({
     author: {
         type: String,
     },
-    // content: [{type: Schema.Type.ObjectId, ref: 'post'}],
+    authorId: {
+        type: Schema.Type.ObjectId,
+        ref: 'User'
+    },
+    city: {
+        type: String
+    },
+    content: {
+        type: String,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    image: {
+        type: String,
+        default: ''
+    }
 });
 
 const Post = mongoose.model('Post', PostSchema);

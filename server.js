@@ -22,33 +22,25 @@ app.use(cors(corsOptions));
 // BodyParser
 app.use(bodyParser.json());
 
-
 // Express Session - Authentication
-
 app.use(
     session({
         //to store session in the database
         store: new MongoStore({ url: process.env.MONGO_URI }), 
         secret: process.env.SESSION_SECRET, 
         resave: false, 
-        saveUniitialized: false, //this is so we only create a session if a property has been added to the session.. 
+        saveUninitialized: false, //this is so we only create a session if a property has been added to the session.. 
         cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 //Expire in 2 weeks
         }
     })
-)
-
+);
 
 // ----------------------------------- Routes ----------------------------------- //
 
-
-//Homepage
-// app.use('/', routes.viewRoutes);
-
-
-app.get('/', (req, res)=>{
-    res.send('<h1>Homepage</h1>');
-});
+// app.get('/', (req, res)=>{
+//     res.send('<h1>Homepage</h1>');
+// });
 
 app.use('/api/v1/auth', routes.auth);
 app.use('/api/v1/users', routes.users);
