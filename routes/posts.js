@@ -8,6 +8,7 @@ const ctrl = require('../controllers');
 // Hit this index route to query for posts by city -> localhost:4000/api/v1/posts?city=sanfrancisco
 router.get('/', ctrl.posts.index);
 router.post('/', ctrl.posts.create);
+router.get('/:id', ctrl.posts.show);
 router.put('/:id', ctrl.posts.update);
 router.delete('/:id', ctrl.posts.destroy);
 

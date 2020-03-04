@@ -16,6 +16,22 @@ const index = (request, response) => {
   });
 };
 
+// Show post
+const show = (request, response) => {
+  db.Post.findById(request.params.id, (error, foundPost) => {
+    if (error) return response.status(500).json({
+      status: 500,
+      message: error
+    });
+    
+    console.log(foundPost)
+    response.status(200).json({
+      status: 200,
+      data: foundPost
+    });
+  });
+};
+
 // Create posts
 const create = (request, response) => {
   // console.log(request.body)
@@ -67,6 +83,7 @@ const destroy = (request, response) => {
 
 module.exports = {
   index,
+  show,
   create,
   update,
   destroy
