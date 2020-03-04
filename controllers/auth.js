@@ -44,15 +44,9 @@ const signup = (req, res) => {
           });
 
         const newUser = {
-<<<<<<< HEAD
                 username: req.body.username,
                 email: req.body.email,
                 password: hash,
-=======
-          username: req.body.username,
-          email: req.body.email,
-          password: hash,
->>>>>>> submaster
         };
 
         db.User.create(newUser, (err, savedUser) => {
