@@ -7,9 +7,24 @@ const PostSchema = mongoose.Schema({
     author: {
         type: String,
     },
+    authorId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    city: {
+        type: String
+    },
     content: {
         type: String,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    image: {
+        type: String,
+        default: ''
+    }
 });
 
 const Post = mongoose.model('Post', PostSchema);
