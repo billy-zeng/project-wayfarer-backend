@@ -12,9 +12,9 @@ const routes = require('./routes');
 
 // --------------------------------- Middleware --------------------------------- //
 const corsOptions = {
-    origin: ['http://localhost:3000'],
-    credentials: true,
-    optionsSuccessStatus: 200
+  origin: ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
@@ -24,16 +24,16 @@ app.use(bodyParser.json());
 
 // Express Session - Authentication
 app.use(
-    session({
-        //to store session in the database
-        store: new MongoStore({ url: process.env.MONGO_URI }), 
-        secret: process.env.SESSION_SECRET, 
-        resave: false, 
-        saveUninitialized: false, //this is so we only create a session if a property has been added to the session.. 
-        cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 //Expire in 2 weeks
-        }
-    })
+  session({
+    //to store session in the database
+    store: new MongoStore({ url: process.env.MONGO_URI }), 
+    secret: process.env.SESSION_SECRET, 
+    resave: false, 
+    saveUninitialized: false, //this is so we only create a session if a property has been added to the session.. 
+    cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 * 2 //Expire in 2 weeks
+    }
+  })
 );
 
 // ----------------------------------- Routes ----------------------------------- //
@@ -43,5 +43,5 @@ app.use('/api/v1/users', routes.users);
 app.use('/api/v1/posts', routes.posts);
 
 app.listen(PORT, () =>
-    console.log(`Server connected at http://localhost:${PORT}`)
+  console.log(`Server connected at http://localhost:${PORT}`)
 );

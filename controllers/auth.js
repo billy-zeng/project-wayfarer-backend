@@ -89,7 +89,7 @@ const login = (req, res) => {
         });
 
       if (isMatch) {
-        req.session.currentUser = { id: foundUser._id };
+        req.session.currentUser = { id: foundUser._id, username: foundUser.username };
         return res
           .status(200)
           .json({ status: 200, message: 'Success', data: foundUser._id });
