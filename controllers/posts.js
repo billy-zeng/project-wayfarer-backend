@@ -34,10 +34,10 @@ const show = (request, response) => {
 
 // Create posts
 const create = (request, response) => {
-  // console.log(request.body)
   const newPost = request.body;
-  newPost.authorId = request.session.currentUser;
-  // console.log(newPost);
+  newPost.authorId = request.session.currentUser.id;
+  newPost.author = request.session.currentUser.username;
+  
   db.Post.create(newPost, (error, savedPost) => {
     if (error) return response.status(500).json({
       status: 500,
