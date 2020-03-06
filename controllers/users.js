@@ -41,8 +41,6 @@ const edit = (request, response) => {
   });
 };
 
-
-//adds for edit profile:  
 module.exports = {
   show,
   edit,
