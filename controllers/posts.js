@@ -7,8 +7,6 @@ const index = (request, response) => {
       status: 500,
       message: error
     });
-    
-    console.log(foundPosts)
     response.status(200).json({
       status: 200,
       data: foundPosts
@@ -23,8 +21,6 @@ const show = (request, response) => {
       status: 500,
       message: error
     });
-    
-    console.log(foundPost)
     response.status(200).json({
       status: 200,
       data: foundPost
@@ -37,13 +33,11 @@ const create = (request, response) => {
   const newPost = request.body;
   newPost.authorId = request.session.currentUser.id;
   newPost.author = request.session.currentUser.username;
-  
   db.Post.create(newPost, (error, savedPost) => {
     if (error) return response.status(500).json({
       status: 500,
       message: error
     });
-
     response.status(200).json({
       status: 200,
       data: savedPost
@@ -58,7 +52,6 @@ const update = (request, response) => {
       status: 500,
       message: error
     });
-
     response.status(200).json({
       status: 200,
       data: updatedPost
@@ -73,7 +66,6 @@ const destroy = (request, response) => {
       status: 500,
       message: error
     });
-
     response.status(200).json({
       status: 200,
       data: deletedPost

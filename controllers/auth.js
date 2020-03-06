@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs');
 const db = require('../models');
 
 // POST Registration - Creating New User
-
 const signup = (req, res) => {
   if (!req.body.username || !req.body.email || !req.body.password) {
     return res.status(400).json({
@@ -10,8 +9,7 @@ const signup = (req, res) => {
       message: 'Please enter your username, email and password'
     });
   }
-  // Verified Account Does Not Exist
-
+  // Verify Account Does Not Exist
   db.User.findOne({ email: req.body.email }, (err, foundUser) => {
     if (err)
       return res.status(500).json({
@@ -26,7 +24,6 @@ const signup = (req, res) => {
       });
 
     // Generated Salt
-
     bcrypt.genSalt(10, (err, salt) => {
       if (err)
         return res.status(500).json({
@@ -35,7 +32,6 @@ const signup = (req, res) => {
         });
 
       // Hashing Users Password
-
       bcrypt.hash(req.body.password, salt, (err, hash) => {
         if (err)
           return res.status(500).json({
@@ -59,7 +55,6 @@ const signup = (req, res) => {
 };
 
 // POST Login - Authenticate User, create session
-
 const login = (req, res) => {
   // console.log(req.body);
   if (!req.body.email || !req.body.password) {
@@ -103,7 +98,6 @@ const login = (req, res) => {
 };
 
 // POST Logout - Destroying Session
-
 const logout = (req, res) => {
   if (!req.session.currentUser)
     return res.status(401).json({ status: 401, message: 'Unauthorized' });
@@ -117,20 +111,8 @@ const logout = (req, res) => {
   });
 };
 
-// GET Verifying Current User
-
-const verify = (req, res) => {
-  if (!req.session.currentUser)
-    return res.status(401).json({ status: 401, message: 'Unauthorized' });
-  res.status(200).json({
-    status: 200,
-    message: `Current User verified. User ID: ${req.session.currentUser.id}`
-  });
-};
-
 module.exports = {
   signup,
   login,
-  verify,
   logout
 };
